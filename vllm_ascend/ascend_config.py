@@ -45,7 +45,16 @@ class AscendConfig:
             ascend_scheduler_config)
 
         self.expert_map_path = additional_config.get("expert_map_path", None)
+        self.expert_map_record_path = additional_config.get(
+            "expert_map_record_path",
+            None)  # Whether to enable expert map recording
         # Eplb config
+        self.init_redundancy_expert = additional_config.get(
+            "init_redundancy_expert",
+            0)  # The number of redundancy experts for the MOE model
+        self.static_eplb = additional_config.get(
+            "static_eplb",
+            False)  # Whether to enable static expert load balancing
         self.dynamic_eplb = additional_config.get("dynamic_eplb", False)
         self.num_iterations_eplb_update = additional_config.get("num_iterations_eplb_update", 400)
         self.gate_eplb = additional_config.get("gate_eplb", False)
